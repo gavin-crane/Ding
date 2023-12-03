@@ -36,7 +36,7 @@ const Thumbnail = ({thumbnail, date, link}) => {
 
 export const Recordings = ({route, navigation}) => { 
     
-    const { itemId, otherParam } = route.params;
+    // const { itemId, otherParam } = route.params;
 
     useEffect(() => {
         console.log('Recordings mounted');
@@ -51,12 +51,12 @@ export const Recordings = ({route, navigation}) => {
             <Text>
                 Recordings
             </Text>
-            <Text>
+            {/* <Text>
                 id: {JSON.stringify(itemId)}
             </Text>
             <Text>
                 otherParam: {JSON.stringify(otherParam)}
-            </Text>
+            </Text> */}
             <ScrollView>
                 <Box style={styles.thumbnailContainer}>
                     {thumnails.map((thumbnail, index) => {
