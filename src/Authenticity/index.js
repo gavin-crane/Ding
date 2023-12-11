@@ -1,3 +1,3 @@
-import Auth from './Auth'
-export { Auth }
-export default Auth
+import AuthSignUp from './AuthSignUp'
+import AuthSignIn from './AuthSignIn'
+export { AuthSignUp, AuthSignIn }

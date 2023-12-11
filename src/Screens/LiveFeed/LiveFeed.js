@@ -11,7 +11,8 @@ import {
 import { GluestackUIProvider, Text, Box, Button } from '@gluestack-ui/themed'
 import RenderUnderStatusBar from '../../Layouts/RenderUnderStatusBar'
 import { useEffect, useState } from 'react'
-import { Auth } from '../../Authenticity/Auth'
+import { AuthSignUp } from '../../Authenticity/AuthSignUp'
+import { AuthSignIn } from '../../Authenticity/AuthSignIn'
 
 export const LiveFeed = ({ navigation }) => {
   useEffect(() => {
@@ -31,12 +32,13 @@ export const LiveFeed = ({ navigation }) => {
     //         </View>
     // </SafeAreaView>
     <>
-      <RenderUnderStatusBar>
-        <Box style={styles.container}>
-          <Text>Hello</Text>
-          <Auth />
-        </Box>
-      </RenderUnderStatusBar>
+      {/* <RenderUnderStatusBar> */}
+      <Box style={styles.container}>
+        {/* <Text>Hello</Text> */}
+        {/* <AuthSignUp /> */}
+        <AuthSignIn />
+      </Box>
+      {/* </RenderUnderStatusBar> */}
       {/* <Button onPress={() => navigation.navigate('Recordings', {
             itemId: 86,
             otherParam: 'anything you want here',

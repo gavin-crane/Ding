@@ -2,9 +2,8 @@
 // ├─ REST API: https://dingservice.app:443/api/
 // └─ Admin UI: https://dingservice.app:443/_/
 
-import PocketBase from 'pocketbase';
+import PocketBase from 'pocketbase'
 
-const pb = new PocketBase('https://dingservice.app:443/api/');
+const pb = new PocketBase('https://dingservice.app')
 
-export default pb;
-
+export default pb

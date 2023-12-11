@@ -42,10 +42,11 @@ const emailRegex =
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/
 
-export const Auth = () => {
+export const AuthSignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
+  const [username, setUsername] = useState('')
   const [editingPass, setEditingPass] = useState(false)
 
   const [validEmail, setValidEmail] = useState(false)
@@ -113,9 +114,18 @@ export const Auth = () => {
           }}
         >
           <VStack space='xl'>
-            <Heading color='$text900' lineHeight='$md'>
-              Login
-            </Heading>
+            <Heading lineHeight='$md'>Create an Account</Heading>
+            <VStack space='xs'>
+              <Text lineHeight='$xs'>Username</Text>
+              <FormControl isInvalid={hitSubmit && !validEmail}>
+                <Input>
+                  <InputField
+                    type='text'
+                    onChangeText={text => setUsername(text)}
+                  />
+                </Input>
+              </FormControl>
+            </VStack>
             <VStack space='xs'>
               <Text lineHeight='$xs'>Email</Text>
               <FormControl isInvalid={hitSubmit && !validEmail}>
@@ -196,4 +206,4 @@ export const Auth = () => {
     </>
   )
 }
-export default Auth
+export default AuthSignUp
