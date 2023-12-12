@@ -9,7 +9,6 @@ import { StatusBar, KeyboardAvoidingView } from 'react-native'
 import { LiveFeed } from './src/Screens/LiveFeed'
 import { Recordings } from './src/Screens/Recordings'
 import { Initial } from './src/Screens/Initial'
-import RenderUnderStatusBar from './src/Layouts/RenderUnderStatusBar'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import {
@@ -19,16 +18,16 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from 'react-native'
-import { createDrawerNavigator } from '@react-navigation/drawer'
+// import { createDrawerNavigator } from '@react-navigation/drawer'
 import { useEffect, useState, useContext } from 'react'
-import { AuthSignIn } from './src/Authenticity/AuthSignIn'
-import { DingSVG } from './src/SVGRComponents/DingSVG'
+// import { AuthSignIn } from './src/Authenticity/AuthSignIn'
+// import { DingSVG } from './src/SVGRComponents/DingSVG'
 import { UserContextProvider } from './src/Providers'
-import 'react-native-gesture-handler'
+// import 'react-native-gesture-handler'
 
-const Drawer = createDrawerNavigator()
+// const Drawer = createDrawerNavigator()
 
-// const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function App () {
   useEffect(() => {
@@ -39,68 +38,29 @@ export default function App () {
     }
   }, [])
   return (
-    <UserContextProvider>
-      <View style={styles.container}>
+    <>
+      <GluestackUIProvider config={config}>
+        <UserContextProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName='initial'>
+              <Stack.Screen name='initial' component={Initial} />
+              <Stack.Screen name='livefeed' component={LiveFeed} />
+              <Stack.Screen name='recordings' component={Recordings} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </UserContextProvider>
+      </GluestackUIProvider>
+      {/* <NavigationContainer>
         <GluestackUIProvider config={config}>
-          <StatusBar />
-          <View style={{}}>
-            {/* <DingSVG /> */}
-            {/* {isLoggedIn ? (
-              <Drawer.Navigator>
-                <Drawer.Screen name='LiveFeed' component={LiveFeed} />
-                <Drawer.Screen name='Recordings' component={Recordings} />
-              </Drawer.Navigator>
-            ) : (
-              <TouchableWithoutFeedback
-                onPress={Keyboard.dismiss}
-                style={{
-                  minWidth: '100%',
-                  position: 'absolute',
-                  backgroundColor: 'red'
-                }}
-              >
-                <KeyboardAvoidingView
-                  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                >
-                  <Box
-                    style={{
-                      flex: 1,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      // backgroundColor: 'blue',
-                      minWidth: '100%'
-                    }}
-                  >
-                    <DingSVG />
-                    <AuthSignIn />
-                  </Box>
-                </KeyboardAvoidingView>
-              </TouchableWithoutFeedback>
-            )} */}
-            {/* <NavigationContainer>
-        <GluestackUIProvider config={config}> */}
-            {/* <Stack.Navigator>
-            <Stack.Screen name="LiveFeed" component={LiveFeed} />
-            <Stack.Screen name="Recordings" component={Recordings} />
-          </Stack.Navigator> */}
-
-            {/* <Drawer.Navigator>
-            <Drawer.Screen name='LiveFeed' component={LiveFeed} />
-            <Drawer.Screen name='Recordings' component={Recordings} />
-          </Drawer.Navigator> */}
-            {/* <RenderUnderStatusBar>
-            <Box>
-            
-              <AuthSignIn />
-            </Box>
-          </RenderUnderStatusBar> */}
-            {/* <LiveFeed />
+          <UserContextProvider>
+            <View style={styles.container}>
+            <StatusBar />
+            <Initial />
+            </View>
+          </UserContextProvider>
         </GluestackUIProvider>
       </NavigationContainer> */}
-          </View>
-        </GluestackUIProvider>
-      </View>
-    </UserContextProvider>
+    </>
   )
 }
 

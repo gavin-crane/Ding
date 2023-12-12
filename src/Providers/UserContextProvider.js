@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const UserContext = createContext()
 
-const UserContextProvider = ({ children }) => {
+const UserContextProvider = ({ children, ...rest }) => {
   const [curUserData, setCurUserData] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -16,10 +16,12 @@ const UserContextProvider = ({ children }) => {
     return () => {
       console.log('UserProvider unmounted')
     }
-  }, [setCurUserData])
+  }, [curUserData])
 
   return (
-    <UserContext.Provider value={{ curUserData, setCurUserData, isLoggedIn }}>
+    <UserContext.Provider
+      value={{ curUserData, setCurUserData, isLoggedIn, ...rest }}
+    >
       {children}
     </UserContext.Provider>
   )
